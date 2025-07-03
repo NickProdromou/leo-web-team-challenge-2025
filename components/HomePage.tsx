@@ -38,7 +38,7 @@ export function HomePage({ currentPage = 1 }: HomePageProps) {
             <>
               <Alert status="success" borderRadius="md">
                 <AlertIcon />
-                Welcome back, {user.username}! Here's your anime catalog.
+                Welcome back, {user.username}! Here&apos;s your anime catalog.
               </Alert>
 
               <Divider />

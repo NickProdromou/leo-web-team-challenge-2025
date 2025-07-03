@@ -2,7 +2,6 @@ import {
   AnimeListResponse,
   AnimeDetailsResponse,
   AnimeListItem,
-  AnimeDetails,
 } from '@/types/anime'
 
 /**

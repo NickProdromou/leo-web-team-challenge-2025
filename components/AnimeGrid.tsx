@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useQuery } from '@apollo/client'
-import { SimpleGrid, Alert, AlertIcon, VStack, HStack, Button, Text, Box, Heading } from '@chakra-ui/react'
+import { SimpleGrid, Alert, AlertIcon, VStack, HStack, Button, Text, Box } from '@chakra-ui/react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { GET_ANIME_LIST } from '@/graphql/queries'
 import { AnimeListResponse } from '@/types/anime'
@@ -104,7 +104,7 @@ export function AnimeGrid({ currentPage }: AnimeGridProps) {
                 No anime found
               </Text>
               <Text fontSize="sm" color="gray.500" lineHeight="tall">
-                This page doesn't have any anime content.
+                This page doesn&apos;t have any anime content.
                 {pageNumber > 1 && " Try going back to an earlier page."}
               </Text>
             </VStack>

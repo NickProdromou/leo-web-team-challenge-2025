@@ -37,7 +37,6 @@ export function AnimeDetailModal({ animeId, isOpen, onClose }: AnimeDetailModalP
     skip: !animeId,
   })
 
-  const cardBg = useColorModeValue('white', 'gray.800')
   const textColor = useColorModeValue('gray.600', 'gray.300')
 
   if (!animeId) return null

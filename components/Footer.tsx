@@ -8,7 +8,6 @@ import {
   HStack,
   VStack,
   Link,
-  useColorModeValue,
   Divider,
 } from '@chakra-ui/react'
 

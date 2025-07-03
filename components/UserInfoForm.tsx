@@ -53,7 +53,12 @@ export function UserInfoForm({ onSubmit, initialData, isLoading, onCancel }: Use
           <FormLabel>Username</FormLabel>
           <Input
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => {
+              setUsername(e.target.value)
+              if (errors.username) {
+                setErrors(prev => ({ ...prev, username: undefined }))
+              }
+            }}
             placeholder="Enter your username"
             disabled={isLoading}
           />
@@ -64,7 +69,12 @@ export function UserInfoForm({ onSubmit, initialData, isLoading, onCancel }: Use
           <FormLabel>Job Title</FormLabel>
           <Input
             value={jobTitle}
-            onChange={(e) => setJobTitle(e.target.value)}
+            onChange={(e) => {
+              setJobTitle(e.target.value)
+              if (errors.jobTitle) {
+                setErrors(prev => ({ ...prev, jobTitle: undefined }))
+              }
+            }}
             placeholder="Enter your job title"
             disabled={isLoading}
           />
