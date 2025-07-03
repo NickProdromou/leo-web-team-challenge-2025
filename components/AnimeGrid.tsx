@@ -59,6 +59,47 @@ export function AnimeGrid() {
   }
 
   const pageInfo = data?.Page.pageInfo
+  const animeList = data?.Page.media || []
+
+  // Empty state when no anime found
+  if (!loading && animeList.length === 0) {
+    return (
+      <VStack 
+        spacing={8} 
+        width="100%" 
+        py={12}
+        align="center"
+      >
+        <VStack spacing={4}>
+          <Text fontSize="2xl" fontWeight="bold" color="gray.500">
+            No anime found
+          </Text>
+          <Text fontSize="md" color="gray.400" textAlign="center">
+            This page doesn't have any anime content.
+            {currentPage > 1 && " Try going back to an earlier page."}
+          </Text>
+        </VStack>
+        
+        {currentPage > 1 && (
+          <HStack spacing={4}>
+            <Button
+              onClick={() => goToPage(1)}
+              variant="outline"
+              colorScheme="blue"
+            >
+              Go to First Page
+            </Button>
+            <Button
+              onClick={() => goToPage(currentPage - 1)}
+              variant="outline"
+            >
+              Previous Page
+            </Button>
+          </HStack>
+        )}
+      </VStack>
+    )
+  }
 
   return (
     <VStack spacing={8} width="100%">
@@ -67,7 +108,7 @@ export function AnimeGrid() {
         spacing={6}
         width="100%"
       >
-        {data?.Page.media.map((anime) => (
+        {animeList.map((anime) => (
           <AnimeCard
             key={anime.id}
             anime={anime}
@@ -87,12 +128,12 @@ export function AnimeGrid() {
           </Button>
           
           <Text>
-            Page {currentPage} of {pageInfo.lastPage || 1}
+            Page {currentPage}
           </Text>
           
           <Button
             onClick={() => goToPage(currentPage + 1)}
-            disabled={!pageInfo.hasNextPage}
+            disabled={!pageInfo?.hasNextPage}
             variant="outline"
           >
             Next

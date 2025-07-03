@@ -15,9 +15,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body style={{ margin: 0, minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
         <Providers>
-          {children}
+          <main style={{ flex: 1 }}>
+            {children}
+          </main>
           <Footer />
           <UserInfoModal />
         </Providers>

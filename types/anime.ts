@@ -1,6 +1,5 @@
 export interface AnimeCoverImage {
   large: string
-  medium?: string
   extraLarge?: string
 }
 
@@ -8,16 +7,6 @@ export interface AnimeTitle {
   romaji: string
   english?: string
   native?: string
-}
-
-export interface AnimeStudio {
-  name: string
-}
-
-export interface AnimeDate {
-  year?: number
-  month?: number
-  day?: number
 }
 
 // Minimal data for list view
@@ -36,7 +25,6 @@ export interface AnimeDetails {
   description?: string
   coverImage: AnimeCoverImage
   averageScore?: number
-  popularity?: number
   genres: string[]
   episodes?: number
   season?: string
@@ -45,11 +33,6 @@ export interface AnimeDetails {
   format?: string
   source?: string
   duration?: number
-  studios?: {
-    nodes: AnimeStudio[]
-  }
-  startDate?: AnimeDate
-  endDate?: AnimeDate
 }
 
 export interface AnimeListResponse {

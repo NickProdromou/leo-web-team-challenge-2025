@@ -37,11 +37,9 @@ export const GET_ANIME_DETAILS = gql`
       description
       coverImage {
         large
-        medium
         extraLarge
       }
       averageScore
-      popularity
       genres
       episodes
       season
@@ -50,21 +48,6 @@ export const GET_ANIME_DETAILS = gql`
       format
       source
       duration
-      studios {
-        nodes {
-          name
-        }
-      }
-      startDate {
-        year
-        month
-        day
-      }
-      endDate {
-        year
-        month
-        day
-      }
     }
   }
 `
