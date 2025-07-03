@@ -15,7 +15,7 @@ const ITEMS_PER_PAGE = 20
 export function AnimeGrid() {
   const [selectedAnimeId, setSelectedAnimeId] = useState<number | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
-  
+
   const searchParams = useSearchParams()
   const router = useRouter()
   const currentPage = parseInt(searchParams.get('page') || '1', 10)
@@ -64,9 +64,9 @@ export function AnimeGrid() {
   // Empty state when no anime found
   if (!loading && animeList.length === 0) {
     return (
-      <VStack 
-        spacing={8} 
-        width="100%" 
+      <VStack
+        spacing={8}
+        width="100%"
         py={12}
         align="center"
       >
@@ -79,7 +79,7 @@ export function AnimeGrid() {
             {currentPage > 1 && " Try going back to an earlier page."}
           </Text>
         </VStack>
-        
+
         {currentPage > 1 && (
           <HStack spacing={4}>
             <Button
@@ -126,11 +126,11 @@ export function AnimeGrid() {
           >
             Previous
           </Button>
-          
+
           <Text>
             Page {currentPage}
           </Text>
-          
+
           <Button
             onClick={() => goToPage(currentPage + 1)}
             disabled={!pageInfo?.hasNextPage}

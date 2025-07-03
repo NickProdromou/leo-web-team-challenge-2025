@@ -33,9 +33,9 @@ export function Footer() {
             </Text>
             <Text fontSize="sm" color={textColor}>
               Data from{' '}
-              <Link 
-                href="https://anilist.co" 
-                isExternal 
+              <Link
+                href="https://anilist.co"
+                isExternal
                 color="blue.500"
                 _hover={{ textDecoration: 'underline' }}
               >
@@ -43,9 +43,9 @@ export function Footer() {
               </Link>
             </Text>
           </HStack>
-          
+
           <Divider />
-          
+
           <VStack spacing={2}>
             <Text fontSize="sm" color={textColor} fontWeight="semibold">
               Leonardo.AI Frontend Challenge

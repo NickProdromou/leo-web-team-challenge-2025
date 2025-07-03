@@ -55,7 +55,7 @@ export function AnimeDetailModal({ animeId, isOpen, onClose }: AnimeDetailModalP
 
         <ModalBody>
           {loading && <LoadingSpinner />}
-          
+
           {error && (
             <Text color="red.500">
               Failed to load anime details: {error.message}

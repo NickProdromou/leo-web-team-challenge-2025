@@ -21,9 +21,9 @@ export default function HomePage() {
               <AlertIcon />
               Welcome back, {user.username}! Here's your anime catalog.
             </Alert>
-            
+
             <Divider />
-            
+
             <Box width="100%">
               <Heading size="lg" mb={4}>Popular Anime</Heading>
               <AnimeGrid />
