@@ -8,4 +8,7 @@ export interface UserContextType {
   setUser: (user: User) => void
   clearUser: () => void
   isUserSet: boolean
+  isProfileOpen: boolean
+  openProfile: () => void
+  closeProfile: () => void
 }

@@ -8,6 +8,7 @@ import {
   Input,
   Button,
   FormErrorMessage,
+  HStack,
 } from '@chakra-ui/react'
 import { User } from '@/types/user'
 
@@ -15,9 +16,10 @@ interface UserInfoFormProps {
   onSubmit: (user: User) => void
   initialData?: User
   isLoading?: boolean
+  onCancel?: () => void
 }
 
-export function UserInfoForm({ onSubmit, initialData, isLoading }: UserInfoFormProps) {
+export function UserInfoForm({ onSubmit, initialData, isLoading, onCancel }: UserInfoFormProps) {
   const [username, setUsername] = useState(initialData?.username || '')
   const [jobTitle, setJobTitle] = useState(initialData?.jobTitle || '')
   const [errors, setErrors] = useState<{ username?: string; jobTitle?: string }>({})
@@ -69,15 +71,38 @@ export function UserInfoForm({ onSubmit, initialData, isLoading }: UserInfoFormP
           <FormErrorMessage>{errors.jobTitle}</FormErrorMessage>
         </FormControl>
 
-        <Button
-          type="submit"
-          colorScheme="blue"
-          size="lg"
-          width="full"
-          isLoading={isLoading}
-        >
-          {initialData ? 'Update Information' : 'Continue'}
-        </Button>
+        {onCancel ? (
+          <HStack spacing={3} width="full">
+            <Button
+              variant="outline"
+              size="lg"
+              width="full"
+              onClick={onCancel}
+              isDisabled={isLoading}
+            >
+              Cancel
+            </Button>
+            <Button
+              type="submit"
+              colorScheme="blue"
+              size="lg"
+              width="full"
+              isLoading={isLoading}
+            >
+              {initialData ? 'Update Information' : 'Continue'}
+            </Button>
+          </HStack>
+        ) : (
+          <Button
+            type="submit"
+            colorScheme="blue"
+            size="lg"
+            width="full"
+            isLoading={isLoading}
+          >
+            {initialData ? 'Update Information' : 'Continue'}
+          </Button>
+        )}
       </VStack>
     </form>
   )

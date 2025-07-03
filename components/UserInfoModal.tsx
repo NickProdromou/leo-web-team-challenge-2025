@@ -16,7 +16,7 @@ import { UserProfile } from './UserProfile'
 import { User } from '@/types/user'
 
 export function UserInfoModal() {
-  const { user, setUser, isUserSet } = useUser()
+  const { user, setUser, isUserSet, isProfileOpen, closeProfile } = useUser()
   const [isEditing, setIsEditing] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -27,20 +27,33 @@ export function UserInfoModal() {
     setUser(userData)
     setIsEditing(false)
     setIsLoading(false)
+    closeProfile() // Close modal after editing
   }
 
   const handleEdit = () => {
     setIsEditing(true)
   }
 
+  const handleCancelEdit = () => {
+    setIsEditing(false)
+  }
+
+  const handleClose = () => {
+    if (isUserSet) {
+      closeProfile()
+      setIsEditing(false)
+    }
+  }
+
   const showForm = !isUserSet || isEditing
+  const isOpen = !isUserSet || isEditing || isProfileOpen
 
   return (
     <Modal
-      isOpen={!isUserSet || isEditing}
-      onClose={() => {}} // Cannot be closed manually
-      closeOnOverlayClick={false}
-      closeOnEsc={false}
+      isOpen={isOpen}
+      onClose={handleClose}
+      closeOnOverlayClick={isUserSet} // Only allow closing if user is set
+      closeOnEsc={isUserSet}
       isCentered
       size={{ base: 'sm', md: 'md' }}
     >
@@ -65,6 +78,7 @@ export function UserInfoModal() {
               onSubmit={handleSubmit}
               initialData={user || undefined}
               isLoading={isLoading}
+              onCancel={isUserSet ? handleCancelEdit : undefined}
             />
           ) : (
             user && <UserProfile user={user} onEdit={handleEdit} />

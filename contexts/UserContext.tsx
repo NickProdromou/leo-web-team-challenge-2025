@@ -9,6 +9,7 @@ const UserContext = createContext<UserContextType | undefined>(undefined)
 export function UserProvider({ children }: { children: ReactNode }) {
   const [user, setUserState] = useState<User | null>(null)
   const [isLoaded, setIsLoaded] = useState(false)
+  const [isProfileOpen, setIsProfileOpen] = useState(false)
 
   useEffect(() => {
     const storedUser = userStorage.get()
@@ -26,11 +27,22 @@ export function UserProvider({ children }: { children: ReactNode }) {
     userStorage.clear()
   }
 
+  const openProfile = () => {
+    setIsProfileOpen(true)
+  }
+
+  const closeProfile = () => {
+    setIsProfileOpen(false)
+  }
+
   const value: UserContextType = {
     user,
     setUser,
     clearUser,
     isUserSet: Boolean(user?.username && user?.jobTitle),
+    isProfileOpen,
+    openProfile,
+    closeProfile,
   }
 
   if (!isLoaded) {

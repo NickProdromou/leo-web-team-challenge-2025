@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, Heading, Text, VStack, Alert, AlertIcon, Divider, Container } from '@chakra-ui/react'
+import { Box, Heading, Text, VStack, Alert, AlertIcon, Divider, Container, Button, HStack } from '@chakra-ui/react'
 import { useUser } from '@/contexts/UserContext'
 import { AnimeGrid } from '@/components/AnimeGrid'
 
@@ -9,16 +9,30 @@ interface HomePageProps {
 }
 
 export function HomePage({ currentPage = 1 }: HomePageProps) {
-  const { user, isUserSet } = useUser()
+  const { user, isUserSet, openProfile } = useUser()
 
   return (
     <Box p={{ base: 4, md: 8 }}>
       <Container maxW="container.xl" px={{ base: 2, md: 4 }}>
         <VStack spacing={4} align="start" width="100%">
-          <Heading>Leonardo.AI Challenge</Heading>
-          <Text fontSize="lg" color="gray.600">
-            Anime Discovery App{currentPage > 1 ? ` - Page ${currentPage}` : ''}
-          </Text>
+          <HStack justify="space-between" width="100%" align="center">
+            <VStack spacing={1} align="start">
+              <Heading>Leonardo.AI Challenge</Heading>
+              <Text fontSize="lg" color="gray.600">
+                Anime Discovery App{currentPage > 1 ? ` - Page ${currentPage}` : ''}
+              </Text>
+            </VStack>
+            {isUserSet && (
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={openProfile}
+                colorScheme="purple"
+              >
+                Profile
+              </Button>
+            )}
+          </HStack>
 
           {isUserSet && user ? (
             <>
