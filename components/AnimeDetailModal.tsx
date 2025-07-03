@@ -46,9 +46,9 @@ export function AnimeDetailModal({ animeId, isOpen, onClose }: AnimeDetailModalP
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="4xl" scrollBehavior="inside">
       <ModalOverlay bg="blackAlpha.800" backdropFilter="blur(5px)" />
-      <ModalContent 
-        bg="white" 
-        maxH="90vh" 
+      <ModalContent
+        bg="white"
+        maxH="90vh"
         borderRadius="2xl"
         boxShadow="2xl"
         border="1px solid"
@@ -207,7 +207,7 @@ export function AnimeDetailModal({ animeId, isOpen, onClose }: AnimeDetailModalP
         </ModalBody>
 
         <ModalFooter bg="gray.50" borderBottomRadius="2xl">
-          <Button 
+          <Button
             onClick={onClose}
             bg="linear-gradient(45deg, #667eea, #764ba2)"
             color="white"

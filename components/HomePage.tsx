@@ -23,9 +23,9 @@ export function HomePage({ currentPage = 1 }: HomePageProps) {
               </Text>
             </VStack>
             {isUserSet && (
-              <Button 
-                variant="outline" 
-                size="sm" 
+              <Button
+                variant="outline"
+                size="sm"
                 onClick={openProfile}
                 colorScheme="purple"
               >
@@ -44,8 +44,8 @@ export function HomePage({ currentPage = 1 }: HomePageProps) {
               <Divider />
 
               <Box width="100%">
-                <Heading 
-                  size="xl" 
+                <Heading
+                  size="xl"
                   mb={4}
                   textAlign="center"
                   bgGradient="linear(to-r, #C54E71, #7962AD)"

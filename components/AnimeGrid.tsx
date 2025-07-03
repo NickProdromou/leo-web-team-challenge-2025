@@ -22,7 +22,7 @@ export function AnimeGrid({ currentPage }: AnimeGridProps) {
 
   const searchParams = useSearchParams()
   const router = useRouter()
-  
+
   // Use prop if provided, otherwise fall back to search params
   const pageNumber = currentPage || parseInt(searchParams.get('page') || '1', 10)
 
@@ -80,9 +80,9 @@ export function AnimeGrid({ currentPage }: AnimeGridProps) {
   // Empty state when no anime found
   if (!loading && animeList.length === 0) {
     return (
-      <Box 
-        display="flex" 
-        justifyContent="center" 
+      <Box
+        display="flex"
+        justifyContent="center"
         alignItems="center"
         minH="200px"
         maxH="300px"

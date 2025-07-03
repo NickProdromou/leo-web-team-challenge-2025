@@ -137,7 +137,7 @@ describe('UserInfoModal', () => {
     // Click on the modal overlay to close
     const modal = screen.getByRole('dialog')
     expect(modal).toBeInTheDocument()
-    
+
     // For this test, we just verify the modal is rendered when it should be
     // The actual close functionality is handled by Chakra UI Modal internally
   })

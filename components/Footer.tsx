@@ -46,7 +46,7 @@ export function Footer() {
                 isExternal
                 color="#FBC5F5"
                 fontWeight="semibold"
-                _hover={{ 
+                _hover={{
                   textDecoration: 'underline',
                   color: '#DFAAAC',
                 }}
