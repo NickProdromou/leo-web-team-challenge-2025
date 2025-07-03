@@ -9,7 +9,7 @@ export const GET_ANIME_LIST = gql`
         lastPage
         hasNextPage
       }
-      media(type: ANIME, sort: POPULARITY_DESC) {
+      media(type: ANIME, sort: POPULARITY_DESC, isAdult: false) {
         id
         title {
           romaji
@@ -27,7 +27,7 @@ export const GET_ANIME_LIST = gql`
 
 export const GET_ANIME_DETAILS = gql`
   query GetAnimeDetails($id: Int!) {
-    Media(id: $id, type: ANIME) {
+    Media(id: $id, type: ANIME, isAdult: false) {
       id
       title {
         romaji
@@ -48,6 +48,7 @@ export const GET_ANIME_DETAILS = gql`
       format
       source
       duration
+      isAdult
     }
   }
 `
