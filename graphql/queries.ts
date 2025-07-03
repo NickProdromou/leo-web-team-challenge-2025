@@ -38,6 +38,7 @@ export const GET_ANIME_DETAILS = gql`
       coverImage {
         large
         medium
+        extraLarge
       }
       averageScore
       popularity
@@ -46,6 +47,9 @@ export const GET_ANIME_DETAILS = gql`
       season
       seasonYear
       status
+      format
+      source
+      duration
       studios {
         nodes {
           name

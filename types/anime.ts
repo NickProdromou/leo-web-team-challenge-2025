@@ -1,6 +1,7 @@
 export interface AnimeCoverImage {
   large: string
   medium?: string
+  extraLarge?: string
 }
 
 export interface AnimeTitle {
@@ -41,6 +42,9 @@ export interface AnimeDetails {
   season?: string
   seasonYear?: number
   status?: string
+  format?: string
+  source?: string
+  duration?: number
   studios?: {
     nodes: AnimeStudio[]
   }

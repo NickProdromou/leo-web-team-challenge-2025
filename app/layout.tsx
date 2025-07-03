@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Providers } from './providers'
 import { UserInfoModal } from '@/components/UserInfoModal'
+import { Footer } from '@/components/Footer'
 
 export const metadata: Metadata = {
   title: 'Leonardo.AI Challenge',
@@ -17,6 +18,7 @@ export default function RootLayout({
       <body>
         <Providers>
           {children}
+          <Footer />
           <UserInfoModal />
         </Providers>
       </body>

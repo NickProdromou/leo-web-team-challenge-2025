@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { useQuery } from '@apollo/client'
 import { SimpleGrid, Alert, AlertIcon, VStack, HStack, Button, Text } from '@chakra-ui/react'
 import { useSearchParams, useRouter } from 'next/navigation'
@@ -7,10 +8,14 @@ import { GET_ANIME_LIST } from '@/graphql/queries'
 import { AnimeListResponse } from '@/types/anime'
 import { AnimeCard } from './AnimeCard'
 import { LoadingSpinner } from './LoadingSpinner'
+import { AnimeDetailModal } from './AnimeDetailModal'
 
 const ITEMS_PER_PAGE = 20
 
 export function AnimeGrid() {
+  const [selectedAnimeId, setSelectedAnimeId] = useState<number | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  
   const searchParams = useSearchParams()
   const router = useRouter()
   const currentPage = parseInt(searchParams.get('page') || '1', 10)
@@ -44,8 +49,13 @@ export function AnimeGrid() {
   }
 
   const handleAnimeClick = (animeId: number) => {
-    // TODO: Open detail modal (Task 8)
-    console.log('Anime clicked:', animeId)
+    setSelectedAnimeId(animeId)
+    setIsModalOpen(true)
+  }
+
+  const handleModalClose = () => {
+    setIsModalOpen(false)
+    setSelectedAnimeId(null)
   }
 
   const pageInfo = data?.Page.pageInfo
@@ -89,6 +99,12 @@ export function AnimeGrid() {
           </Button>
         </HStack>
       )}
+
+      <AnimeDetailModal
+        animeId={selectedAnimeId}
+        isOpen={isModalOpen}
+        onClose={handleModalClose}
+      />
     </VStack>
   )
 }
