@@ -1,35 +1,30 @@
 'use client'
 
-import { Box, Heading, Text, Button, VStack } from '@chakra-ui/react'
+import { Box, Heading, Text, VStack, Alert, AlertIcon } from '@chakra-ui/react'
 import { useUser } from '@/contexts/UserContext'
 
 export default function HomePage() {
-  const { user, setUser, clearUser, isUserSet } = useUser()
-
-  const testSetUser = () => {
-    setUser({ username: 'testuser', jobTitle: 'Developer' })
-  }
+  const { user, isUserSet } = useUser()
 
   return (
     <Box p={8}>
-      <VStack spacing={4} align="start">
+      <VStack spacing={6} align="start">
         <Heading>Leonardo.AI Challenge</Heading>
-        <Text>Anime Discovery App</Text>
+        <Text fontSize="lg" color="gray.600">
+          Anime Discovery App
+        </Text>
         
-        {isUserSet ? (
-          <Box>
-            <Text>Welcome, {user?.username}!</Text>
-            <Text>Job: {user?.jobTitle}</Text>
-            <Button onClick={clearUser}>Clear User</Button>
-          </Box>
-        ) : (
-          <Box>
-            <Text>No user set</Text>
-            <Button colorScheme="blue" onClick={testSetUser}>
-              Test Set User
-            </Button>
-          </Box>
+        {isUserSet && user && (
+          <Alert status="success" borderRadius="md">
+            <AlertIcon />
+            Welcome back, {user.username}! You can now access the anime catalog.
+          </Alert>
         )}
+        
+        <Text>
+          This app will help you discover amazing anime series using the AniList API.
+          {!isUserSet && ' Please complete the welcome form to get started.'}
+        </Text>
       </VStack>
     </Box>
   )

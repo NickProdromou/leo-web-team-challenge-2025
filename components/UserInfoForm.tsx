@@ -1,0 +1,84 @@
+'use client'
+
+import { useState } from 'react'
+import {
+  VStack,
+  FormControl,
+  FormLabel,
+  Input,
+  Button,
+  FormErrorMessage,
+} from '@chakra-ui/react'
+import { User } from '@/types/user'
+
+interface UserInfoFormProps {
+  onSubmit: (user: User) => void
+  initialData?: User
+  isLoading?: boolean
+}
+
+export function UserInfoForm({ onSubmit, initialData, isLoading }: UserInfoFormProps) {
+  const [username, setUsername] = useState(initialData?.username || '')
+  const [jobTitle, setJobTitle] = useState(initialData?.jobTitle || '')
+  const [errors, setErrors] = useState<{ username?: string; jobTitle?: string }>({})
+
+  const validate = () => {
+    const newErrors: { username?: string; jobTitle?: string } = {}
+    
+    if (!username.trim() || username.trim().length < 2) {
+      newErrors.username = 'Username must be at least 2 characters'
+    }
+    
+    if (!jobTitle.trim() || jobTitle.trim().length < 2) {
+      newErrors.jobTitle = 'Job title must be at least 2 characters'
+    }
+    
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (validate()) {
+      onSubmit({ username: username.trim(), jobTitle: jobTitle.trim() })
+    }
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <VStack spacing={4}>
+        <FormControl isInvalid={!!errors.username}>
+          <FormLabel>Username</FormLabel>
+          <Input
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter your username"
+            disabled={isLoading}
+          />
+          <FormErrorMessage>{errors.username}</FormErrorMessage>
+        </FormControl>
+
+        <FormControl isInvalid={!!errors.jobTitle}>
+          <FormLabel>Job Title</FormLabel>
+          <Input
+            value={jobTitle}
+            onChange={(e) => setJobTitle(e.target.value)}
+            placeholder="Enter your job title"
+            disabled={isLoading}
+          />
+          <FormErrorMessage>{errors.jobTitle}</FormErrorMessage>
+        </FormControl>
+
+        <Button
+          type="submit"
+          colorScheme="blue"
+          size="lg"
+          width="full"
+          isLoading={isLoading}
+        >
+          {initialData ? 'Update Information' : 'Continue'}
+        </Button>
+      </VStack>
+    </form>
+  )
+}
