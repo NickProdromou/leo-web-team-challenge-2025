@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useQuery } from '@apollo/client'
 import { SimpleGrid, Alert, AlertIcon, VStack, HStack, Button, Text, Box } from '@chakra-ui/react'
-import { useSearchParams, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { GET_ANIME_LIST } from '@/graphql/queries'
 import { AnimeListResponse } from '@/types/anime'
 import { AnimeCard } from './AnimeCard'
@@ -20,34 +20,20 @@ export function AnimeGrid({ currentPage }: AnimeGridProps) {
   const [selectedAnimeId, setSelectedAnimeId] = useState<number | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const searchParams = useSearchParams()
   const router = useRouter()
 
-  // Use prop if provided, otherwise fall back to search params
-  const pageNumber = currentPage || parseInt(searchParams.get('page') || '1', 10)
+  // Always use the prop-based approach with dynamic routing
+  const pageNumber = currentPage || 1
 
   const { loading, error, data } = useQuery<AnimeListResponse>(GET_ANIME_LIST, {
     variables: { page: pageNumber, perPage: ITEMS_PER_PAGE }
   })
 
   const goToPage = (page: number) => {
-    if (currentPage) {
-      // If using props (dynamic routing), navigate to route
-      if (page === 1) {
-        router.push('/')
-      } else {
-        router.push(`/page/${page}`)
-      }
+    if (page === 1) {
+      router.push('/')
     } else {
-      // If using search params (legacy), update search params
-      const params = new URLSearchParams(searchParams.toString())
-      if (page === 1) {
-        params.delete('page')
-      } else {
-        params.set('page', page.toString())
-      }
-      const newUrl = params.toString() ? `/?${params.toString()}` : '/'
-      router.push(newUrl)
+      router.push(`/page/${page}`)
     }
   }
 
