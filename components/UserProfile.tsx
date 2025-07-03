@@ -14,7 +14,7 @@ export function UserProfile({ user, onEdit }: UserProfileProps) {
       <Text fontSize="lg" fontWeight="semibold">
         Your Information
       </Text>
-      
+
       <Box>
         <Text fontSize="sm" color="gray.600" mb={1}>
           Username

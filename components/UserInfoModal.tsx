@@ -58,7 +58,7 @@ export function UserInfoModal() {
             )}
           </VStack>
         </ModalHeader>
-        
+
         <ModalBody pb={6}>
           {showForm ? (
             <UserInfoForm
