@@ -6,6 +6,10 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { MockedProvider } from '@apollo/client/testing'
 import { AnimeGrid } from '@/components/AnimeGrid'
 import { GET_ANIME_LIST } from '@/graphql/queries'
+import { 
+  createMockAnimeListResponse, 
+  createMockAnimeItem
+} from '../src/test/mock-utils'
 
 // Mock Next.js navigation hooks
 vi.mock('next/navigation', () => ({
@@ -36,7 +40,7 @@ const mockAnimeListResult = {
     variables: { page: 1, perPage: 20 },
   },
   result: {
-    data: {
+    data: createMockAnimeListResponse({
       Page: {
         pageInfo: {
           total: 100,
@@ -45,45 +49,30 @@ const mockAnimeListResult = {
           hasNextPage: true,
         },
         media: [
-          {
+          createMockAnimeItem({
             id: 21,
-            title: {
-              romaji: 'One Piece',
-              english: 'One Piece',
-            },
-            coverImage: {
-              large: 'https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21-YCDoj1EkAxFn.jpg',
-            },
+            title: { romaji: 'One Piece', english: 'One Piece' },
+            coverImage: { large: 'https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21-YCDoj1EkAxFn.jpg' },
             averageScore: 87,
             genres: ['Action', 'Adventure', 'Comedy'],
-          },
-          {
+          }),
+          createMockAnimeItem({
             id: 1535,
-            title: {
-              romaji: 'Death Note',
-              english: 'Death Note',
-            },
-            coverImage: {
-              large: 'https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx1535-lawCwhzhi96X.jpg',
-            },
+            title: { romaji: 'Death Note', english: 'Death Note' },
+            coverImage: { large: 'https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx1535-lawCwhzhi96X.jpg' },
             averageScore: 85,
             genres: ['Drama', 'Psychological', 'Supernatural'],
-          },
-          {
+          }),
+          createMockAnimeItem({
             id: 16498,
-            title: {
-              romaji: 'Shingeki no Kyojin',
-              english: 'Attack on Titan',
-            },
-            coverImage: {
-              large: 'https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx16498-73IhOXpJZiMF.jpg',
-            },
+            title: { romaji: 'Shingeki no Kyojin', english: 'Attack on Titan' },
+            coverImage: { large: 'https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx16498-73IhOXpJZiMF.jpg' },
             averageScore: 84,
             genres: ['Action', 'Drama'],
-          },
+          }),
         ],
       },
-    },
+    }),
   },
 }
 
@@ -93,7 +82,7 @@ const mockEmptyListResult = {
     variables: { page: 1, perPage: 20 },
   },
   result: {
-    data: {
+    data: createMockAnimeListResponse({
       Page: {
         pageInfo: {
           total: 0,
@@ -103,7 +92,7 @@ const mockEmptyListResult = {
         },
         media: [],
       },
-    },
+    }),
   },
 }
 
