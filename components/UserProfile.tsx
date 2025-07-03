@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import { Box, Text, Button, VStack, HStack, Divider } from '@chakra-ui/react'
 import { User } from '@/types/user'
 

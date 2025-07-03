@@ -14,6 +14,7 @@ A Next.js application built for the Leonardo.AI interview process, showcasing an
 - 📄 URL-based pagination (`/page/2`, `/page/3`, etc.)
 - 🔍 Modal-based anime details
 - 📱 Responsive design for mobile and desktop
+- 🧪 Comprehensive testing with Vitest + React Testing Library
 
 ## Getting Started
 
@@ -36,6 +37,31 @@ npm run dev
 ```
 
 3. **Open your browser**: [http://localhost:3000](http://localhost:3000)
+
+### Testing
+
+Run the comprehensive test suite:
+
+```bash
+# Run all tests
+npm test
+
+# Run tests in single-run mode (no watch)
+npm test --run
+
+# Run tests with coverage
+npm test -- --coverage
+```
+
+**Test Coverage**:
+- 📦 **localStorage utilities** - Data persistence & retrieval (5 tests)
+- 🧩 **Component rendering** - UserProfile, Footer, AnimeCard, AnimeGrid (19 tests)  
+- 🎯 **User interactions** - Button clicks, form submissions, card interactions
+- 🔧 **Edge cases** - Missing data, error states, empty results
+- 📱 **Responsive behavior** - Image fallbacks, genre truncation, pagination
+- 🚀 **Next.js integration** - Router mocking, navigation hooks, GraphQL queries
+
+**Total: 24 passing tests** across 5 test files with comprehensive coverage of core functionality.
 
 ## Deployment
 
@@ -71,6 +97,15 @@ Or connect your GitHub repo to Vercel for automatic deployments.
 │   └── user.ts           # User data types
 ├── utils/                # Utilities
 │   └── localStorage.ts   # Browser storage
+├── __tests__/            # Test suite
+│   ├── AnimeCard.test.tsx    # Component tests (8 tests)
+│   ├── AnimeGrid.test.tsx    # Grid component tests (7 tests)  
+│   ├── Footer.test.tsx       # Footer component tests (2 tests)
+│   ├── UserProfile.test.tsx  # User profile tests (2 tests)
+│   └── localStorage.test.ts  # Utility tests (5 tests)
+├── src/test/             # Test configuration
+│   └── setup.ts          # Jest DOM setup
+├── vitest.config.ts      # Vitest configuration
 └── vercel.json           # Vercel config
 ```
 
