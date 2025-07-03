@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, Heading, Text, VStack, Alert, AlertIcon, Divider } from '@chakra-ui/react'
+import { Box, Heading, Text, VStack, Alert, AlertIcon, Divider, Container } from '@chakra-ui/react'
 import { useUser } from '@/contexts/UserContext'
 import { AnimeGrid } from '@/components/AnimeGrid'
 
@@ -8,8 +8,9 @@ export default function HomePage() {
   const { user, isUserSet } = useUser()
 
   return (
-    <Box p={8}>
-      <VStack spacing={6} align="start" width="100%">
+    <Box p={{ base: 4, md: 8 }}>
+      <Container maxW="container.xl" px={{ base: 2, md: 4 }}>
+        <VStack spacing={4} align="start" width="100%">
         <Heading>Leonardo.AI Challenge</Heading>
         <Text fontSize="lg" color="gray.600">
           Anime Discovery App
@@ -25,7 +26,16 @@ export default function HomePage() {
             <Divider />
 
             <Box width="100%">
-              <Heading size="lg" mb={4}>Popular Anime</Heading>
+              <Heading 
+                size="xl" 
+                mb={4}
+                textAlign="center"
+                bgGradient="linear(to-r, #C54E71, #7962AD)"
+                bgClip="text"
+                fontWeight="bold"
+              >
+                Popular Anime Collection 🌸
+              </Heading>
               <AnimeGrid />
             </Box>
           </>
@@ -36,6 +46,7 @@ export default function HomePage() {
           </Text>
         )}
       </VStack>
+      </Container>
     </Box>
   )
 }

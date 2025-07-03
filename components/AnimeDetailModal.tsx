@@ -46,14 +46,26 @@ export function AnimeDetailModal({ animeId, isOpen, onClose }: AnimeDetailModalP
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="4xl" scrollBehavior="inside">
-      <ModalOverlay />
-      <ModalContent bg={cardBg} maxH="90vh">
-        <ModalHeader>
+      <ModalOverlay bg="blackAlpha.800" backdropFilter="blur(5px)" />
+      <ModalContent 
+        bg="white" 
+        maxH="90vh" 
+        borderRadius="2xl"
+        boxShadow="2xl"
+        border="1px solid"
+        borderColor="purple.200"
+      >
+        <ModalHeader
+          bg="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+          color="white"
+          borderTopRadius="2xl"
+          fontWeight="bold"
+        >
           {anime?.title?.english || anime?.title?.romaji || 'Loading...'}
         </ModalHeader>
-        <ModalCloseButton />
+        <ModalCloseButton color="white" _hover={{ bg: "whiteAlpha.200" }} />
 
-        <ModalBody>
+        <ModalBody p={6}>
           {loading && <LoadingSpinner />}
 
           {error && (
@@ -195,8 +207,21 @@ export function AnimeDetailModal({ animeId, isOpen, onClose }: AnimeDetailModalP
           )}
         </ModalBody>
 
-        <ModalFooter>
-          <Button onClick={onClose}>Close</Button>
+        <ModalFooter bg="gray.50" borderBottomRadius="2xl">
+          <Button 
+            onClick={onClose}
+            bg="linear-gradient(45deg, #667eea, #764ba2)"
+            color="white"
+            _hover={{
+              bg: "linear-gradient(45deg, #5a67d8, #6b46c1)",
+              transform: "translateY(-1px)",
+              boxShadow: "lg",
+            }}
+            borderRadius="full"
+            px={8}
+          >
+            Close
+          </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>

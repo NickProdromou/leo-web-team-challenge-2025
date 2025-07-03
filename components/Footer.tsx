@@ -12,46 +12,58 @@ import {
 } from '@chakra-ui/react'
 
 export function Footer() {
-  const bgColor = useColorModeValue('gray.50', 'gray.900')
-  const borderColor = useColorModeValue('gray.200', 'gray.700')
-  const textColor = useColorModeValue('gray.600', 'gray.400')
+  const bgColor = 'linear-gradient(135deg, #433E5E 0%, #7962AD 50%, #C54E71 100%)'
+  const textColor = 'white'
 
   return (
     <Box
       as="footer"
-      bg={bgColor}
-      borderTop="1px"
-      borderColor={borderColor}
+      background={bgColor}
       mt={16}
       py={8}
+      color={textColor}
+      position="relative"
+      _before={{
+        content: '""',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        height: '1px',
+        background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)',
+      }}
     >
       <Container maxW="container.xl">
         <VStack spacing={4}>
           <HStack spacing={8} wrap="wrap" justify="center">
-            <Text fontSize="sm" color={textColor}>
-              Built with Next.js, TypeScript & Chakra UI
+            <Text fontSize="sm" opacity={0.9}>
+              Built with Next.js, TypeScript & Chakra UI ⚡
             </Text>
-            <Text fontSize="sm" color={textColor}>
+            <Text fontSize="sm" opacity={0.9}>
               Data from{' '}
               <Link
                 href="https://anilist.co"
                 isExternal
-                color="blue.500"
-                _hover={{ textDecoration: 'underline' }}
+                color="#FBC5F5"
+                fontWeight="semibold"
+                _hover={{ 
+                  textDecoration: 'underline',
+                  color: '#DFAAAC',
+                }}
               >
-                AniList API
+                AniList API 🎌
               </Link>
             </Text>
           </HStack>
 
-          <Divider />
+          <Divider opacity={0.3} />
 
           <VStack spacing={2}>
-            <Text fontSize="sm" color={textColor} fontWeight="semibold">
-              Leonardo.AI Frontend Challenge
+            <Text fontSize="sm" fontWeight="bold" opacity={0.95}>
+              🎨 Leonardo.AI Frontend Challenge
             </Text>
-            <Text fontSize="xs" color={textColor}>
-              Challenge Version: v3.5 • Implementation: July 2025
+            <Text fontSize="xs" opacity={0.8}>
+              Challenge Version: v3.5 • Implementation: July 2025 ✨
             </Text>
           </VStack>
         </VStack>
