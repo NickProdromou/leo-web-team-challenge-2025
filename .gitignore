@@ -29,3 +29,6 @@ Thumbs.db
 
 # Vercel
 .vercel/
+
+# Development docs
+copilot-instructions.md
