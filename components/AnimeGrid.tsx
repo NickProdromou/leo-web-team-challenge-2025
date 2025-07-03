@@ -12,27 +12,43 @@ import { AnimeDetailModal } from './AnimeDetailModal'
 
 const ITEMS_PER_PAGE = 20
 
-export function AnimeGrid() {
+interface AnimeGridProps {
+  currentPage?: number
+}
+
+export function AnimeGrid({ currentPage }: AnimeGridProps) {
   const [selectedAnimeId, setSelectedAnimeId] = useState<number | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const searchParams = useSearchParams()
   const router = useRouter()
-  const currentPage = parseInt(searchParams.get('page') || '1', 10)
+  
+  // Use prop if provided, otherwise fall back to search params
+  const pageNumber = currentPage || parseInt(searchParams.get('page') || '1', 10)
 
   const { loading, error, data } = useQuery<AnimeListResponse>(GET_ANIME_LIST, {
-    variables: { page: currentPage, perPage: ITEMS_PER_PAGE }
+    variables: { page: pageNumber, perPage: ITEMS_PER_PAGE }
   })
 
   const goToPage = (page: number) => {
-    const params = new URLSearchParams(searchParams.toString())
-    if (page === 1) {
-      params.delete('page')
+    if (currentPage) {
+      // If using props (dynamic routing), navigate to route
+      if (page === 1) {
+        router.push('/')
+      } else {
+        router.push(`/page/${page}`)
+      }
     } else {
-      params.set('page', page.toString())
+      // If using search params (legacy), update search params
+      const params = new URLSearchParams(searchParams.toString())
+      if (page === 1) {
+        params.delete('page')
+      } else {
+        params.set('page', page.toString())
+      }
+      const newUrl = params.toString() ? `/?${params.toString()}` : '/'
+      router.push(newUrl)
     }
-    const newUrl = params.toString() ? `/?${params.toString()}` : '/'
-    router.push(newUrl)
   }
 
   if (loading) {
@@ -89,11 +105,11 @@ export function AnimeGrid() {
               </Text>
               <Text fontSize="sm" color="gray.500" lineHeight="tall">
                 This page doesn't have any anime content.
-                {currentPage > 1 && " Try going back to an earlier page."}
+                {pageNumber > 1 && " Try going back to an earlier page."}
               </Text>
             </VStack>
 
-            {currentPage > 1 && (
+            {pageNumber > 1 && (
               <HStack spacing={4} pt={2}>
                 <Button
                   onClick={() => goToPage(1)}
@@ -111,7 +127,7 @@ export function AnimeGrid() {
                   Go to First Page
                 </Button>
                 <Button
-                  onClick={() => goToPage(currentPage - 1)}
+                  onClick={() => goToPage(pageNumber - 1)}
                   variant="outline"
                   borderColor="#7962AD"
                   color="#7962AD"
@@ -152,8 +168,8 @@ export function AnimeGrid() {
       {pageInfo && (
         <HStack spacing={6} justify="center" py={4}>
           <Button
-            onClick={() => goToPage(currentPage - 1)}
-            disabled={currentPage <= 1}
+            onClick={() => goToPage(pageNumber - 1)}
+            disabled={pageNumber <= 1}
             bg="linear-gradient(45deg, #C54E71, #7962AD)"
             color="white"
             _hover={{
@@ -193,12 +209,12 @@ export function AnimeGrid() {
               bgClip="text"
               fontSize="lg"
             >
-              Page {currentPage}
+              Page {pageNumber}
             </Text>
           </Box>
 
           <Button
-            onClick={() => goToPage(currentPage + 1)}
+            onClick={() => goToPage(pageNumber + 1)}
             disabled={!pageInfo?.hasNextPage}
             bg="linear-gradient(45deg, #C54E71, #7962AD)"
             color="white"
