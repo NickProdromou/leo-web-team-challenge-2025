@@ -51,7 +51,7 @@ export function Footer() {
               Leonardo.AI Frontend Challenge
             </Text>
             <Text fontSize="xs" color={textColor}>
-              Challenge Version: v1.0.0 • Implementation: July 2025
+              Challenge Version: v3.5 • Implementation: July 2025
             </Text>
           </VStack>
         </VStack>

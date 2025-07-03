@@ -66,4 +66,4 @@ utils/              # Helper functions
 
 ## Challenge Version
 
-v1.0.0 • Implementation: July 2025
+v3.5 • Implementation: July 2025
