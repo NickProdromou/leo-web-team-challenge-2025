@@ -12,10 +12,6 @@ interface UserProfileProps {
 export function UserProfile({ user, onEdit }: UserProfileProps) {
   return (
     <VStack spacing={4} align="stretch">
-      <Text fontSize="lg" fontWeight="semibold">
-        Your Information
-      </Text>
-
       <Box>
         <Text fontSize="sm" color="gray.600" mb={1}>
           Username

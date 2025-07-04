@@ -57,22 +57,34 @@ export function UserInfoModal() {
       isCentered
       size={{ base: 'sm', md: 'md' }}
     >
-      <ModalOverlay bg="blackAlpha.800" />
-      <ModalContent mx={4}>
-        <ModalHeader>
+      <ModalOverlay bg="blackAlpha.800" backdropFilter="blur(5px)" />
+      <ModalContent
+        mx={4}
+        bg="white"
+        borderRadius="2xl"
+        boxShadow="2xl"
+        border="1px solid"
+        borderColor="purple.200"
+      >
+        <ModalHeader
+          bg="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+          color="white"
+          borderTopRadius="2xl"
+          fontWeight="bold"
+        >
           <VStack spacing={2} align="start">
             <Text fontSize="xl" fontWeight="bold">
-              {!isUserSet ? 'Welcome!' : 'User Information'}
+              {!isUserSet ? 'Welcome!' : 'Profile'}
             </Text>
             {!isUserSet && (
-              <Text fontSize="sm" color="gray.600" fontWeight="normal">
+              <Text fontSize="sm" color="white" fontWeight="normal" opacity={0.9}>
                 Please provide your information to continue
               </Text>
             )}
           </VStack>
         </ModalHeader>
 
-        <ModalBody pb={6}>
+        <ModalBody p={6}>
           {showForm ? (
             <UserInfoForm
               onSubmit={handleSubmit}
