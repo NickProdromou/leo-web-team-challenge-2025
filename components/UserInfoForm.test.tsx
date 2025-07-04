@@ -2,7 +2,7 @@ import React from 'react'
 import { fireEvent, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { renderWithChakra, screen } from './test-utils'
+import { renderWithChakra, screen } from '@/test/test-utils'
 import { UserInfoForm } from '@/components/UserInfoForm'
 import { User } from '@/types/user'
 

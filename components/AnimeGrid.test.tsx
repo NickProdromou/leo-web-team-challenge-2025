@@ -1,9 +1,9 @@
 import React from 'react'
-import { render, screen, waitFor } from '@testing-library/react'
+import { waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { ChakraProvider } from '@chakra-ui/react'
 import { MockedProvider } from '@apollo/client/testing'
+import { renderWithChakra, screen } from '@/test/test-utils'
 import { AnimeGrid } from '@/components/AnimeGrid'
 import { GET_ANIME_LIST } from '@/graphql/queries'
 import { 
@@ -25,12 +25,10 @@ vi.mock('next/navigation', () => ({
 }))
 
 const renderWithProviders = (component: React.ReactElement, mocks: any[] = []) => {
-  return render(
-    <ChakraProvider>
-      <MockedProvider mocks={mocks} addTypename={false}>
-        {component}
-      </MockedProvider>
-    </ChakraProvider>
+  return renderWithChakra(
+    <MockedProvider mocks={mocks} addTypename={false}>
+      {component}
+    </MockedProvider>
   )
 }
 

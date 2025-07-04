@@ -1,6 +1,6 @@
 import React from 'react'
 import { describe, it, expect } from 'vitest'
-import { renderWithChakra, screen } from './test-utils'
+import { renderWithChakra, screen } from '@/test/test-utils'
 import { LoadingSpinner } from '@/components/LoadingSpinner'
 
 describe('LoadingSpinner', () => {

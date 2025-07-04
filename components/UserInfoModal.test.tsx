@@ -2,7 +2,7 @@ import React from 'react'
 import { waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { renderWithProviders, screen } from './test-utils'
+import { renderWithProviders, screen } from '@/test/test-utils'
 import { UserInfoModal } from '@/components/UserInfoModal'
 
 // Mock the UserContext to control modal state

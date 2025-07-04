@@ -1,8 +1,7 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, it, expect, vi } from 'vitest'
-import { ChakraProvider } from '@chakra-ui/react'
+import { renderWithChakra, screen } from '@/test/test-utils'
 import { UserProfile } from '@/components/UserProfile'
 import { User } from '@/types/user'
 
@@ -11,19 +10,11 @@ const mockUser: User = {
   jobTitle: 'Developer'
 }
 
-const renderWithProviders = (component: React.ReactElement) => {
-  return render(
-    <ChakraProvider>
-      {component}
-    </ChakraProvider>
-  )
-}
-
 describe('UserProfile', () => {
   it('displays user information correctly', () => {
     const mockOnEdit = vi.fn()
 
-    renderWithProviders(
+    renderWithChakra(
       <UserProfile user={mockUser} onEdit={mockOnEdit} />
     )
 
@@ -38,7 +29,7 @@ describe('UserProfile', () => {
     const mockOnEdit = vi.fn()
     const user = userEvent.setup()
 
-    renderWithProviders(
+    renderWithChakra(
       <UserProfile user={mockUser} onEdit={mockOnEdit} />
     )
 

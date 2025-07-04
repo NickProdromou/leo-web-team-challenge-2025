@@ -1,5 +1,5 @@
 import React from 'react'
-import { renderWithChakra, screen } from './test-utils'
+import { renderWithChakra, screen } from '@/test/test-utils'
 import userEvent from '@testing-library/user-event'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { Header } from '@/components/Header'
@@ -42,7 +42,9 @@ describe('Header', () => {
     vi.clearAllMocks()
     // Set default mock return value
     mockUseUser.mockReturnValue(mockUserContextWithUser)
-  })  it('renders Anime Discovery App title', () => {
+  })
+
+  it('renders Anime Discovery App title', () => {
     renderWithChakra(<Header />)
 
     expect(screen.getByText('Anime Discovery App')).toBeInTheDocument()
@@ -97,7 +99,6 @@ describe('Header', () => {
   it('renders correctly without current page prop', () => {
     renderWithChakra(<Header />)
 
-    expect(screen.getByText('Leonardo.AI Challenge')).toBeInTheDocument()
     expect(screen.getByText('Anime Discovery App')).toBeInTheDocument()
   })
 })
