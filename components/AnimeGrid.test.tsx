@@ -9,7 +9,7 @@ import { GET_ANIME_LIST } from '@/graphql/queries'
 import { 
   createMockAnimeListResponse, 
   createMockAnimeItem
-} from '../src/test/mock-utils'
+} from '@/test/mock-utils'
 
 // Mock Next.js navigation hooks
 vi.mock('next/navigation', () => ({

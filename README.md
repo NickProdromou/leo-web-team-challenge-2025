@@ -57,14 +57,14 @@ npm test -- --coverage
 
 **Test Coverage**:
 - 📦 **localStorage utilities** - Data persistence & retrieval (5 tests)
-- 🧩 **Component rendering** - All UI components with interactions (48 tests)
+- 🧩 **Component rendering** - All UI components with interactions (49 tests)
 - 🚨 **Error handling** - Error page and not-found page testing (8 tests)  
 - 🎯 **User interactions** - Button clicks, form submissions, modal interactions
 - 🔧 **Edge cases** - Missing data, error states, empty results, validation
 - 📱 **Responsive behavior** - Image fallbacks, genre truncation, pagination
 - 🚀 **Next.js integration** - Router mocking, navigation hooks, GraphQL queries
 
-**Total: 56 passing tests** across 11 test files with comprehensive coverage of all components and utilities.
+**Total: 57 passing tests** across 11 test files with comprehensive coverage of all components and utilities.
 
 ## Deployment
 
@@ -111,10 +111,11 @@ Or connect your GitHub repo to Vercel for automatic deployments.
 ├── utils/                # Utilities
 │   └── localStorage.ts   # Browser storage helpers
 ├── test/                 # Test configuration
-│   └── test-utils.tsx    # Testing utilities
-├── components/*.test.tsx  # Component tests (48 tests)
-├── app/*.test.tsx        # App router tests (8 tests)
-├── utils/*.test.ts       # Utility tests (5 tests)
+│   ├── setup.ts          # Test setup configuration
+│   └── mock-utils.ts     # Testing utilities & mocks
+├── components/*.test.tsx  # Component tests (co-located)
+├── app/*.test.tsx        # App router tests (co-located)
+├── utils/*.test.ts       # Utility tests (co-located)
 ├── vitest.config.ts      # Vitest configuration
 └── vercel.json           # Vercel deployment config
 ```

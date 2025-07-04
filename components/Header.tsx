@@ -10,6 +10,7 @@ import {
   VStack,
   useColorModeValue,
 } from '@chakra-ui/react'
+import Link from 'next/link'
 import { useUser } from '@/contexts/UserContext'
 
 interface HeaderProps {
@@ -35,12 +36,16 @@ export function Header({ currentPage }: HeaderProps) {
       <Container maxW="container.xl" py={4}>
         <HStack justify="space-between" align="center">
           <VStack spacing={1} align="start">
-            <Heading
-              size="lg"
-              variant="gradient"
-            >
-              Anime Discovery App
-            </Heading>
+            <Link href="/" passHref style={{ textDecoration: 'none' }}>
+              <Heading
+                size="lg"
+                variant="gradient"
+                cursor="pointer"
+                _hover={{ opacity: 0.8 }}
+              >
+                Anime Discovery App
+              </Heading>
+            </Link>
             {currentPage && currentPage > 1 && (
               <Text fontSize="md" color="gray.600">
                 Page {currentPage}

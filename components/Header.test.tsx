@@ -101,4 +101,14 @@ describe('Header', () => {
 
     expect(screen.getByText('Anime Discovery App')).toBeInTheDocument()
   })
+
+  it('makes app title a link to the home page', () => {
+    renderWithChakra(<Header />)
+
+    const appTitle = screen.getByText('Anime Discovery App')
+    const link = appTitle.closest('a')
+    
+    expect(link).toBeInTheDocument()
+    expect(link).toHaveAttribute('href', '/')
+  })
 })
