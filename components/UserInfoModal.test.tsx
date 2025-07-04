@@ -4,10 +4,11 @@ import userEvent from '@testing-library/user-event'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { renderWithProviders, screen } from '@/test/test-utils'
 import { UserInfoModal } from '@/components/UserInfoModal'
+import type { User } from '@/types/user'
 
 // Mock the UserContext to control modal state
 const mockUserContext = {
-  user: null as any,
+  user: null as User | null,
   setUser: vi.fn(),
   isUserSet: false,
   isProfileOpen: false,
@@ -128,7 +129,6 @@ describe('UserInfoModal', () => {
   })
 
   it('closes modal when overlay is clicked', async () => {
-    const user = userEvent.setup()
     mockUserContext.isProfileOpen = true
     mockUserContext.isUserSet = true
     mockUserContext.user = { username: 'test', jobTitle: 'test' }

@@ -1,8 +1,8 @@
 import React from 'react'
 import { waitFor } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { MockedProvider } from '@apollo/client/testing'
+import type { MockedResponse } from '@apollo/client/testing'
 import { renderWithChakra, screen } from '@/test/test-utils'
 import { AnimeGrid } from '@/components/AnimeGrid'
 import { GET_ANIME_LIST } from '@/graphql/queries'
@@ -24,7 +24,7 @@ vi.mock('next/navigation', () => ({
   }),
 }))
 
-const renderWithProviders = (component: React.ReactElement, mocks: any[] = []) => {
+const renderWithProviders = (component: React.ReactElement, mocks: MockedResponse[] = []) => {
   return renderWithChakra(
     <MockedProvider mocks={mocks} addTypename={false}>
       {component}
