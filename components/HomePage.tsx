@@ -25,7 +25,7 @@ export function HomePage({ currentPage = 1 }: HomePageProps) {
                 borderColor="green.200"
               >
                 <AlertIcon />
-                Welcome back, {user.username}! Here&apos;s your anime catalog.
+                Welcome back, {user.username}! Here's your anime catalog.
               </Alert>
 
               <Box width="100%">
@@ -39,6 +39,7 @@ export function HomePage({ currentPage = 1 }: HomePageProps) {
                 </Heading>
                 <AnimeGrid currentPage={currentPage} />
               </Box>
+
             </>
           ) : (
             <VStack spacing={4} align="center" py={16}>

@@ -30,45 +30,51 @@ describe('UserInfoForm', () => {
     await user.click(submitButton)
 
     await waitFor(() => {
-      expect(screen.getByText(/username must be at least 2 characters/i)).toBeInTheDocument()
-      expect(screen.getByText(/job title must be at least 2 characters/i)).toBeInTheDocument()
+      expect(screen.getByText(/username is required/i)).toBeInTheDocument()
+      expect(screen.getByText(/job title is required/i)).toBeInTheDocument()
     })
 
     expect(mockOnSubmit).not.toHaveBeenCalled()
   })
 
-  it('shows validation error for short username', async () => {
+  it('accepts single character username', async () => {
     const user = userEvent.setup()
     renderWithChakra(<UserInfoForm onSubmit={mockOnSubmit} />)
 
     const usernameInput = screen.getByLabelText(/username/i)
-    const submitButton = screen.getByRole('button', { name: /continue/i })
-
-    await user.type(usernameInput, 'a')
-    await user.click(submitButton)
-
-    await waitFor(() => {
-      expect(screen.getByText(/username must be at least 2 characters/i)).toBeInTheDocument()
-    })
-
-    expect(mockOnSubmit).not.toHaveBeenCalled()
-  })
-
-  it('shows validation error for short job title', async () => {
-    const user = userEvent.setup()
-    renderWithChakra(<UserInfoForm onSubmit={mockOnSubmit} />)
-
     const jobTitleInput = screen.getByLabelText(/job title/i)
     const submitButton = screen.getByRole('button', { name: /continue/i })
 
+    await user.type(usernameInput, 'a')
+    await user.type(jobTitleInput, 'Dev')
+    await user.click(submitButton)
+
+    await waitFor(() => {
+      expect(mockOnSubmit).toHaveBeenCalledWith({
+        username: 'a',
+        jobTitle: 'Dev'
+      })
+    })
+  })
+
+  it('accepts single character job title', async () => {
+    const user = userEvent.setup()
+    renderWithChakra(<UserInfoForm onSubmit={mockOnSubmit} />)
+
+    const usernameInput = screen.getByLabelText(/username/i)
+    const jobTitleInput = screen.getByLabelText(/job title/i)
+    const submitButton = screen.getByRole('button', { name: /continue/i })
+
+    await user.type(usernameInput, 'user')
     await user.type(jobTitleInput, 'x')
     await user.click(submitButton)
 
     await waitFor(() => {
-      expect(screen.getByText(/job title must be at least 2 characters/i)).toBeInTheDocument()
+      expect(mockOnSubmit).toHaveBeenCalledWith({
+        username: 'user',
+        jobTitle: 'x'
+      })
     })
-
-    expect(mockOnSubmit).not.toHaveBeenCalled()
   })
 
   it('submits form with valid data', async () => {
@@ -131,13 +137,13 @@ describe('UserInfoForm', () => {
     // Trigger validation error
     await user.click(submitButton)
     await waitFor(() => {
-      expect(screen.getByText(/username must be at least 2 characters/i)).toBeInTheDocument()
+      expect(screen.getByText(/username is required/i)).toBeInTheDocument()
     })
 
     // Start typing to clear error
     await user.type(usernameInput, 'valid_username')
     await waitFor(() => {
-      expect(screen.queryByText(/username must be at least 2 characters/i)).not.toBeInTheDocument()
+      expect(screen.queryByText(/username is required/i)).not.toBeInTheDocument()
     })
   })
 })

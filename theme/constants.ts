@@ -21,4 +21,5 @@ export const gradients = {
   overlay: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%)',
   cardHover: 'linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1))',
   pink: 'linear-gradient(45deg, #E178B0, #CB5F9E)',
+  background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
 } as const

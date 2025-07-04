@@ -17,6 +17,7 @@
     "react/jsx-props-no-spreading": "off",
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
+    "react/no-unescaped-entities": "off",
 
     // Accessibility rules
     "jsx-a11y/alt-text": "error",

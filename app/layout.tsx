@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
+import { Box } from '@chakra-ui/react'
 import { Providers } from './providers'
 import { UserInfoModal } from '@/components/UserInfoModal'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
+import { gradients } from '@/theme/constants'
 
 export const metadata: Metadata = {
   title: 'Leonardo.AI Challenge',
@@ -16,14 +18,24 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body style={{ margin: 0, minHeight: '100vh', display: 'flex', flexDirection: 'column', background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)' }}>
+      <body style={{ margin: 0 }}>
         <Providers>
-          <Header />
-          <main style={{ flex: 1 }}>
-            {children}
-          </main>
-          <Footer />
-          <UserInfoModal />
+          <Box
+            minH="100vh"
+            display="flex"
+            flexDirection="column"
+            bg={gradients.background}
+          >
+            <Header />
+            
+            <Box as="main" flex={1}>
+              {children}
+            </Box>
+            
+            <Footer />
+            
+            <UserInfoModal />
+          </Box>
         </Providers>
       </body>
     </html>

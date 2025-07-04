@@ -90,7 +90,7 @@ export function AnimeGrid({ currentPage }: AnimeGridProps) {
                 No anime found
               </Text>
               <Text fontSize="sm" color="gray.500" lineHeight="tall">
-                This page doesn&apos;t have any anime content.
+                This page doesn't have any anime content.
                 {pageNumber > 1 && " Try going back to an earlier page."}
               </Text>
             </VStack>

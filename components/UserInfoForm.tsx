@@ -27,12 +27,12 @@ export function UserInfoForm({ onSubmit, initialData, isLoading, onCancel }: Use
   const validate = () => {
     const newErrors: { username?: string; jobTitle?: string } = {}
 
-    if (!username.trim() || username.trim().length < 2) {
-      newErrors.username = 'Username must be at least 2 characters'
+    if (!username.trim()) {
+      newErrors.username = 'Username is required'
     }
 
-    if (!jobTitle.trim() || jobTitle.trim().length < 2) {
-      newErrors.jobTitle = 'Job title must be at least 2 characters'
+    if (!jobTitle.trim()) {
+      newErrors.jobTitle = 'Job title is required'
     }
 
     setErrors(newErrors)
