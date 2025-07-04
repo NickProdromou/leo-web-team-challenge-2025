@@ -37,9 +37,7 @@ export function Header({ currentPage }: HeaderProps) {
           <VStack spacing={1} align="start">
             <Heading
               size="lg"
-              bgGradient="linear(to-r, #667eea, #764ba2)"
-              bgClip="text"
-              fontWeight="bold"
+              variant="gradient"
             >
               Anime Discovery App
             </Heading>
@@ -58,15 +56,7 @@ export function Header({ currentPage }: HeaderProps) {
               <Button
                 size="sm"
                 onClick={openProfile}
-                bg="linear-gradient(45deg, #667eea, #764ba2)"
-                color="white"
-                _hover={{
-                  bg: "linear-gradient(45deg, #5a67d8, #6b46c1)",
-                  transform: "translateY(-1px)",
-                  boxShadow: "lg",
-                }}
-                borderRadius="full"
-                px={6}
+                variant="gradient"
               >
                 Profile
               </Button>

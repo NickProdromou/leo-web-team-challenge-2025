@@ -10,6 +10,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react'
 import { AnimeListItem } from '@/types/anime'
+import { gradients } from '@/theme/constants'
 
 interface AnimeCardProps {
   anime: AnimeListItem
@@ -42,7 +43,7 @@ export function AnimeCard({ anime, onClick }: AnimeCardProps) {
         left: 0,
         right: 0,
         bottom: 0,
-        background: 'linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1))',
+        background: gradients.cardHover,
         opacity: 0,
         transition: 'opacity 0.3s ease-in-out',
         zIndex: 1,
@@ -64,7 +65,7 @@ export function AnimeCard({ anime, onClick }: AnimeCardProps) {
           fallback={
             <Box
               height="300px"
-              bg="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+              bg={gradients.primary}
               display="flex"
               alignItems="center"
               justifyContent="center"
@@ -82,7 +83,7 @@ export function AnimeCard({ anime, onClick }: AnimeCardProps) {
           left="0"
           right="0"
           height="50%"
-          background="linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%)"
+          background={gradients.overlay}
           opacity={0}
           transition="opacity 0.3s ease-in-out"
           _groupHover={{
@@ -106,13 +107,10 @@ export function AnimeCard({ anime, onClick }: AnimeCardProps) {
         <HStack justify="space-between" align="center">
           {anime.averageScore && (
             <Badge 
-              bg="linear-gradient(45deg, #48bb78, #38a169)"
-              color="white"
+              variant="gradient"
               fontSize="sm"
               px={3}
               py={1}
-              borderRadius="full"
-              fontWeight="bold"
             >
               ⭐ {anime.averageScore}%
             </Badge>
@@ -138,11 +136,8 @@ export function AnimeCard({ anime, onClick }: AnimeCardProps) {
           })}
           {anime.genres.length > 3 && (
             <Badge 
-              bg="linear-gradient(45deg, #667eea, #764ba2)"
-              color="white"
-              fontSize="xs" 
-              borderRadius="md"
-              fontWeight="semibold"
+              variant="gradientPrimary"
+              fontSize="xs"
             >
               +{anime.genres.length - 3}
             </Badge>

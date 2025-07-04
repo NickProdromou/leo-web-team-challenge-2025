@@ -99,15 +99,7 @@ export function AnimeGrid({ currentPage }: AnimeGridProps) {
               <HStack spacing={4} pt={2}>
                 <Button
                   onClick={() => goToPage(1)}
-                  bg="linear-gradient(45deg, #E178B0, #CB5F9E)"
-                  color="white"
-                  _hover={{
-                    bg: "linear-gradient(45deg, #E68D9F, #C54E71)",
-                    transform: "translateY(-1px)",
-                    boxShadow: "lg",
-                  }}
-                  borderRadius="full"
-                  px={6}
+                  variant="gradientPink"
                   size="sm"
                 >
                   Go to First Page
@@ -156,13 +148,7 @@ export function AnimeGrid({ currentPage }: AnimeGridProps) {
           <Button
             onClick={() => goToPage(pageNumber - 1)}
             disabled={pageNumber <= 1}
-            bg="linear-gradient(45deg, #C54E71, #7962AD)"
-            color="white"
-            _hover={{
-              bg: "linear-gradient(45deg, #A280CE, #51246E)",
-              transform: "translateY(-1px)",
-              boxShadow: "lg",
-            }}
+            variant="gradientSecondary"
             _disabled={{
               bg: "gray.300",
               color: "gray.500",
@@ -174,8 +160,6 @@ export function AnimeGrid({ currentPage }: AnimeGridProps) {
               },
             }}
             leftIcon={<span>⬅️</span>}
-            borderRadius="full"
-            px={6}
           >
             Previous
           </Button>
@@ -202,13 +186,7 @@ export function AnimeGrid({ currentPage }: AnimeGridProps) {
           <Button
             onClick={() => goToPage(pageNumber + 1)}
             disabled={!pageInfo?.hasNextPage}
-            bg="linear-gradient(45deg, #C54E71, #7962AD)"
-            color="white"
-            _hover={{
-              bg: "linear-gradient(45deg, #A280CE, #51246E)",
-              transform: "translateY(-1px)",
-              boxShadow: "lg",
-            }}
+            variant="gradientSecondary"
             _disabled={{
               bg: "gray.300",
               color: "gray.500",
@@ -220,8 +198,6 @@ export function AnimeGrid({ currentPage }: AnimeGridProps) {
               },
             }}
             rightIcon={<span>➡️</span>}
-            borderRadius="full"
-            px={6}
           >
             Next
           </Button>

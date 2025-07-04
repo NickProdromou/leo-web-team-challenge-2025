@@ -33,9 +33,7 @@ export function HomePage({ currentPage = 1 }: HomePageProps) {
                   size="xl"
                   mb={6}
                   textAlign="center"
-                  bgGradient="linear(to-r, #C54E71, #7962AD)"
-                  bgClip="text"
-                  fontWeight="bold"
+                  variant="gradientSecondary"
                 >
                   Popular Anime Collection 🌸
                 </Heading>
@@ -47,9 +45,7 @@ export function HomePage({ currentPage = 1 }: HomePageProps) {
               <Heading
                 size="lg"
                 textAlign="center"
-                bgGradient="linear(to-r, #667eea, #764ba2)"
-                bgClip="text"
-                fontWeight="bold"
+                variant="gradient"
               >
                 Welcome to Anime Discovery
               </Heading>

@@ -23,6 +23,7 @@ import {
 import { useQuery } from '@apollo/client'
 import { GET_ANIME_DETAILS } from '@/graphql/queries'
 import { LoadingSpinner } from './LoadingSpinner'
+import { gradients } from '@/theme/constants'
 import type { AnimeDetailsResponse } from '@/types/anime'
 
 interface AnimeDetailModalProps {
@@ -55,7 +56,7 @@ export function AnimeDetailModal({ animeId, isOpen, onClose }: AnimeDetailModalP
         borderColor="purple.200"
       >
         <ModalHeader
-          bg="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+          bg={gradients.primary}
           color="white"
           borderTopRadius="2xl"
           fontWeight="bold"
@@ -209,15 +210,7 @@ export function AnimeDetailModal({ animeId, isOpen, onClose }: AnimeDetailModalP
         <ModalFooter bg="gray.50" borderBottomRadius="2xl">
           <Button
             onClick={onClose}
-            bg="linear-gradient(45deg, #667eea, #764ba2)"
-            color="white"
-            _hover={{
-              bg: "linear-gradient(45deg, #5a67d8, #6b46c1)",
-              transform: "translateY(-1px)",
-              boxShadow: "lg",
-            }}
-            borderRadius="full"
-            px={8}
+            variant="gradient"
           >
             Close
           </Button>
