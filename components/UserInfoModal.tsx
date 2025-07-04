@@ -57,7 +57,7 @@ export function UserInfoModal() {
       isCentered
       size={{ base: 'sm', md: 'md' }}
     >
-      <ModalOverlay bg="blackAlpha.800" backdropFilter="blur(5px)" />
+      <ModalOverlay bg="blackAlpha.400" />
       <ModalContent
         mx={4}
         bg="white"
