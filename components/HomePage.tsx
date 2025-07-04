@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, Text, VStack, Alert, AlertIcon, Divider, Container, Heading } from '@chakra-ui/react'
+import { Box, Text, VStack, Alert, AlertIcon, Container, Heading } from '@chakra-ui/react'
 import { useUser } from '@/contexts/UserContext'
 import { AnimeGrid } from '@/components/AnimeGrid'
 
